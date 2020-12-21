@@ -51,11 +51,13 @@ class Cart extends React.Component {
   IncreaseItem(data){
     var cartObj = this.props.cart;
     var count = cartObj[data[0]].accessories[data[1]].options[data[2]].count;
-    cartObj[data[0]].accessories[data[1]].options[data[2]].count = count == null ? 2 : count++; 
+    cartObj[data[0]].accessories[data[1]].options[data[2]].count = count == null ? 2 : count+1; 
+    cartObj[data[0]].price = cartObj[data[0]].price + cartObj[data[0]].accessories[data[1]].options[data[2]].price
     this.props.addToCart(cartObj);
   }
   DecreaseItem(data){
     var cartObj = this.props.cart;
+    cartObj[data[0]].price = cartObj[data[0]].price - cartObj[data[0]].accessories[data[1]].options[data[2]].price
     var count = cartObj[data[0]].accessories[data[1]].options[data[2]].count;
     if(count == null || count === 1){
       cartObj[data[0]].accessories[data[1]].options.splice(data[2],1);
@@ -66,8 +68,9 @@ class Cart extends React.Component {
         }
       }
     }else{
-      cartObj[data[0]].accessories[data[1]].options[data[2]].count = count - 1;
+      cartObj[data[0]].accessories[data[1]].options[data[2]].count = count - 1;     
     }   
+
     this.props.addToCart(cartObj);
   }
 

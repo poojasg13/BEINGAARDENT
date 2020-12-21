@@ -85,7 +85,7 @@ class BrandOptionsModal extends React.Component {
            }
            else{
              var count = cartObj[findValue].accessories[accessList].options[itemIndex].count;
-            cartObj[findValue].accessories[accessList].options[itemIndex].count = count == null ? 2 :  count++;
+            cartObj[findValue].accessories[accessList].options[itemIndex].count = count == null ? 2 :  count+1;
            }
            
           });
@@ -209,7 +209,7 @@ class BrandOptionsModal extends React.Component {
           <ModalValidationWrapper>
             <Collapse in={this.props.hasNoItems} >
               <ValidationDiv>
-                You can select only three three favorite sauce!
+                Please select atleast one brand
               </ValidationDiv>
             </Collapse>
           </ModalValidationWrapper>
